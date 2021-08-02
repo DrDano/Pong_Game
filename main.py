@@ -9,4 +9,7 @@ screen.bgcolor("black")
 
 paddle.Paddle()
 
+screen.listen()
+screen.onkey(fun=paddle.Paddle.go_up, key="Up")
+
 screen.exitonclick()
