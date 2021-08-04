@@ -12,6 +12,13 @@ class Ball(Turtle):
     def random_dir(self):
         pass
 
-    def move(self, direction):
-        self.setheading(direction)
-        self.forward(345)
+    def move(self, y_inc):
+        self.setposition(x=self.xcor() + 5, y=self.ycor() + y_inc)
+
+    def bounce(self):
+        if self.ycor() >= 300:
+            self.move(y_inc=-5)
+        elif self.ycor() <= -300:
+            self.move(y_inc=+5)
+        else:
+            pass
