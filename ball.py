@@ -1,5 +1,7 @@
+import random
+import time
 from turtle import Turtle
-from random import randint
+from random import choice
 
 class Ball(Turtle):
     def __init__(self):
@@ -8,8 +10,8 @@ class Ball(Turtle):
         self.shape("circle")
         self.penup()
         self.shapesize(stretch_wid=1, stretch_len=1)
-        self.x_move = 10
-        self.y_move = 10
+        self.x_move = 7
+        self.y_move = 7
 
     def random_dir(self):
         pass
@@ -17,8 +19,20 @@ class Ball(Turtle):
     def move(self):
         self.setposition(x=self.xcor() + self.x_move, y=self.ycor() + self.y_move)
 
-    def bounce(self):
+    def bounce_y(self):
         if self.ycor() >= 290 or self.ycor() <= -290:
             self.y_move *= -1
         else:
             pass
+
+    def bounce_x(self):
+        self.x_move *= -1
+
+    def ball_reset(self):
+        if self.xcor() > 391 or self.xcor() < -391:
+            self.home()
+            time.sleep(1)
+            self.bounce_x()
+
+
+
