@@ -24,11 +24,9 @@ screen.onkey(fun=left_paddle.go_down, key="s")
 # All autonomous movement code
 game_is_on = True
 while game_is_on:
-    ball1.move(y_inc=5)
+    ball1.move()
     screen.update()
-    time.sleep(0.02)
-    if ball1.ycor() > 300 or ball1.ycor() < -300:
-        game_is_on = False
-for n in range(20):
+    time.sleep(0.05)
     ball1.bounce()
+
 screen.exitonclick()

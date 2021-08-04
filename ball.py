@@ -8,17 +8,17 @@ class Ball(Turtle):
         self.shape("circle")
         self.penup()
         self.shapesize(stretch_wid=1, stretch_len=1)
+        self.x_move = 10
+        self.y_move = 10
 
     def random_dir(self):
         pass
 
-    def move(self, y_inc):
-        self.setposition(x=self.xcor() + 5, y=self.ycor() + y_inc)
+    def move(self):
+        self.setposition(x=self.xcor() + self.x_move, y=self.ycor() + self.y_move)
 
     def bounce(self):
-        if self.ycor() >= 300:
-            self.move(y_inc=-5)
-        elif self.ycor() <= -300:
-            self.move(y_inc=+5)
+        if self.ycor() >= 290 or self.ycor() <= -290:
+            self.y_move *= -1
         else:
             pass
