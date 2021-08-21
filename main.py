@@ -34,6 +34,7 @@ while game_is_on:
         ball.bounce_x()
 
     # Detect ball going out of bounds
-    ball.ball_reset()
+    ball.r_ball_reset()
+    ball.l_ball_reset()
 
 screen.exitonclick()

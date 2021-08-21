@@ -28,8 +28,14 @@ class Ball(Turtle):
     def bounce_x(self):
         self.x_move *= -1
 
-    def ball_reset(self):
-        if self.xcor() > 391 or self.xcor() < -391:
+    def r_ball_reset(self):
+        if self.xcor() > 381:
+            self.home()
+            time.sleep(1)
+            self.bounce_x()
+
+    def l_ball_reset(self):
+        if self.xcor() > -381:
             self.home()
             time.sleep(1)
             self.bounce_x()
