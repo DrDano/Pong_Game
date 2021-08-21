@@ -13,9 +13,6 @@ class Ball(Turtle):
         self.x_move = 7
         self.y_move = 7
 
-    def random_dir(self):
-        pass
-
     def move(self):
         self.setposition(x=self.xcor() + self.x_move, y=self.ycor() + self.y_move)
 
@@ -28,17 +25,10 @@ class Ball(Turtle):
     def bounce_x(self):
         self.x_move *= -1
 
-    def r_ball_reset(self):
-        if self.xcor() > 381:
-            self.home()
-            time.sleep(1)
-            self.bounce_x()
-
-    def l_ball_reset(self):
-        if self.xcor() > -381:
-            self.home()
-            time.sleep(1)
-            self.bounce_x()
+    def ball_reset(self):
+        self.home()
+        time.sleep(1)
+        self.bounce_x()
 
 
 

@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 screen = Screen()
@@ -14,6 +15,7 @@ screen.tracer(0)
 right_paddle = Paddle((350, 0))
 left_paddle = Paddle((-350, 0))
 ball = Ball()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(fun=right_paddle.go_up, key="Up")
@@ -23,10 +25,12 @@ screen.onkey(fun=left_paddle.go_down, key="s")
 
 # All autonomous movement code
 game_is_on = True
+game_speed = 0.05
 while game_is_on:
+    scoreboard.update_scoreboard()
     ball.move()
     screen.update()
-    time.sleep(0.05)
+    time.sleep(game_speed)
     ball.bounce_y()
 
     # Detect collision with paddles
@@ -34,7 +38,14 @@ while game_is_on:
         ball.bounce_x()
 
     # Detect ball going out of bounds
-    ball.r_ball_reset()
-    ball.l_ball_reset()
+    if ball.xcor() > 381:
+        scoreboard.l_point()
+        game_speed *= 0.9
+        ball.ball_reset()
+
+    if ball.xcor() < -385:
+        scoreboard.r_point()
+        game_speed *= 0.9
+        ball.ball_reset()
 
 screen.exitonclick()
